@@ -1,0 +1,11 @@
+<button
+  [attr.disabled]="isDisabled ? true : null"
+  type="{{ type }}"
+  class="btn {{ className }} d-flex align-items-center"
+  (click)="handlerClick($event)"
+  name="button">
+  <ng-content></ng-content>
+  <div *ngIf="isLoading" class="infinite-spin ms-1 d-flex">
+    <i class="feather icon-loader"></i>
+  </div>
+</button>

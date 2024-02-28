@@ -1,0 +1,19 @@
+<!-- <router-outlet></router-outlet> -->
+<div class="vertical-layout">
+    <app-navbar
+    layoutType="vertical" 
+    [collapse]="isCollapse"
+    [isMobile]="isMobile"
+    class="header-text-dark header-nav layout-vertical"
+></app-navbar>
+<app-sidebar
+    *ngIf="!isMobile"
+    [quickExpand]="quickExpand"
+    [collapse]="isCollapse" 
+    (mouseenter)="mouseEnterExpand()"
+    (mouseleave)="mouseLeaveCollapse()"
+    class="side-nav nav-menu-light"
+></app-sidebar>
+<mobile-nav *ngIf="isMobile" [isOpen]="isMobileNavOpen" class="mobile-nav nav-menu-light"></mobile-nav>
+<content [class.d-none]="!isPermission" class="content" [collapse]="isCollapse"></content>
+</div>

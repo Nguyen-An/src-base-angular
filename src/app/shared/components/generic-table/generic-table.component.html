@@ -1,0 +1,62 @@
+<div class="table-responsive">
+	<table width="100%" class="table table-striped {{ className }}">
+		<thead *ngIf="!hideColumnHeader">
+			<ng-container *ngFor="let tableData of objectKeys(columnHeader)">
+				<ng-container [ngSwitch]="tableData">
+					<ng-container *ngSwitchDefault>
+						<th (click)="sortBy(tableData)" [class.cursor-pointer]="columnHeader[tableData].sort" class="text-{{ columnHeader[tableData].align || 'left' }}"
+							[width]="columnHeader[tableData].width">
+							{{ columnHeader[tableData].title }}
+
+							<ng-container *ngIf="columnHeader[tableData].sort">
+								&nbsp;
+								<i class="feather {{
+											sort[tableData] === undefined
+											? 'icon-more-vertical'
+											: sort[tableData] === 'asc'
+											? 'icon-chevrons-up'
+											: 'icon-chevrons-down'
+											}}"></i>
+							</ng-container>
+						</th>
+					</ng-container>
+
+					<ng-container *ngSwitchCase="'action'">
+						<th class="text-{{ columnHeader[tableData].align || 'left' }}">
+							{{ columnHeader[tableData].title }}
+						</th>
+					</ng-container>
+				</ng-container>
+			</ng-container>
+		</thead>
+
+
+		<!-- Row shown when there is no matching data. -->
+		<tbody>
+			<tr *ngIf="totalItems === 0">
+				<td [attr.colspan]="objectKeys(columnHeader).length" align="center">
+					No data found
+				</td>
+			</tr>
+			<ng-content></ng-content>
+		</tbody>
+	</table>
+</div>
+
+
+
+<div style="display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;" *ngIf="totalItems> 0 && !hidePaginate">
+	<div>
+		Showing {{ (page - 1) * pageSize + 1 }} to
+		{{ page * pageSize > totalItems ? totalItems : page * pageSize }} of
+		{{ totalItems }} entries
+	</div>
+	<div>
+		<pagination-controls class="custom-pagination" (pageChange)="page= $event; emitPage()" previousLabel=""
+			nextLabel="">
+		</pagination-controls>
+	</div>
+</div>

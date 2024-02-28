@@ -1,0 +1,11 @@
+<div class="min-w-120">
+	<ng-select
+		[class.is-invalid]="control.invalid && (control.touched || submitted)"
+		[formControl]="control"
+		[items]="countryCodes"
+		bindLabel="dialCode"
+		bindValue="dialCode"
+		[clearable]="false"
+		appendTo="body"
+		[readonly]="isDisabled"></ng-select>
+</div>

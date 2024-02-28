@@ -1,0 +1,14 @@
+<div class="header-nav-wrap">
+    <div class="header-nav-left">
+        <app-nav-toggle [isMobile]="isMobile"></app-nav-toggle>
+    </div>
+    <ng-container *ngTemplateOutlet="headerNavRight"></ng-container>
+</div>
+
+<ng-template #headerNavRight>
+    <div class="header-nav-right">
+        <!-- <nav-notification></nav-notification> -->
+
+        <nav-profile></nav-profile>
+    </div>
+</ng-template>

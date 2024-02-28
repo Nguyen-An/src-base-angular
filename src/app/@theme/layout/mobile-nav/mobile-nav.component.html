@@ -1,0 +1,14 @@
+<div class="nav-backdrop" *ngIf="isOpen" (click)="closeNav()"></div>
+<div class="mobile-nav-panel">
+    <div class="nav-logo d-flex align-items-center justify-content-between">
+        <a routerLink="/">
+            <img src="assets/images/logo/logo.svg" class="img-fluid" alt="logo">
+        </a>
+        <div class="cursor-pointer" (click)="closeNav()">
+            <i class="feather icon-arrow-left font-size-lg"></i>
+        </div>
+    </div>
+    <ng-scrollbar class="mobile-nav-panel-content">
+        <vertical-menu-content (onNavLinkClick)="onClicked()"></vertical-menu-content>
+    </ng-scrollbar>
+</div>

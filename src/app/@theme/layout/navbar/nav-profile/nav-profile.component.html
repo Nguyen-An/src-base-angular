@@ -1,0 +1,27 @@
+<dropdown dropdownClass="header-nav-item-select nav-profile" (click)="navProfile.toggle($event)">
+    <div class="toggle-wrapper d-flex align-items-center">
+        <avatar [size]="35" src="/assets/images/avatars/avatar-default.png"></avatar>
+        <span class="fw-bold mx-1">Admin</span>
+        <i class="feather icon-chevron-down"></i>
+    </div>
+    <dropdown-menu #navProfile alignment="right">
+        <a routerLink="/profile" dropdownItem>
+            <div class="d-flex align-items-center">
+                <i class="font-size-lg me-2 feather icon-user"></i>
+                <span>My profile</span>
+            </div>
+        </a>
+        <a routerLink="/change-password" dropdownItem>
+            <div class="d-flex align-items-center">
+                <i class="font-size-lg me-2 feather icon-settings"></i>
+                <span>Change Password</span>
+            </div>
+        </a>
+        <a href="javascript:void(0)" (click)="signout()" dropdownItem>
+            <div class="d-flex align-items-center">
+                <i class="font-size-lg me-2 feather icon-power"></i>
+                <span>Sign Out</span>
+            </div>
+        </a>
+    </dropdown-menu>
+</dropdown>

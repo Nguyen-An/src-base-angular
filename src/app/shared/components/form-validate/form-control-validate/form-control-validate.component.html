@@ -1,0 +1,51 @@
+<ng-container *ngIf="control">
+	<!-- <ng-container *ngIf="customError; else defaultMessage"> -->
+	<div class="invalid-feedback d-block mt-2" *ngIf="customError">
+		<p *ngIf="control.errors?.[customError?.error!] && (control.touched ||
+			control.dirty || submitted)" [innerHTML]="customError.message">
+
+		</p>
+	</div>
+	<!-- </ng-container>
+  <ng-template #defaultMessage> -->
+	<div
+		class="invalid-feedback d-block mt-2"
+		*ngIf="(control.touched || submitted) && control.errors">
+		<p *ngIf="control.errors?.['required'] && customError?.error !== 'required'">
+			{{ name }} is required
+		</p>
+		<p *ngIf="control.errors?.['email'] && customError?.error !== 'email'">
+			Please enter a valid {{ name }}
+		</p>
+		<p *ngIf="control.errors?.['pattern'] && customError?.error !== 'pattern'">
+			Please enter a valid {{ name }}
+		</p>
+		<p *ngIf="control.errors?.['minlength'] && customError?.error !== 'minlength'">
+			{{ name }} must be less than
+			{{ control.errors?.['minlength']?.requiredLength }} character.
+		</p>
+		<p *ngIf="control.errors?.['maxlength'] && customError?.error !== 'maxlength'">
+			{{ name }} must be at least
+			{{ control.errors?.['maxlength']?.requiredLength }} character.
+		</p>
+		<p *ngIf="control.errors?.['mustMatch'] && customError?.error !== 'mustMatch'">
+			{{ control?.errors?.['mustMatch']?.controlLabel }} and {{ name }} does not
+			match
+		</p>
+		<p
+			*ngIf="control.errors?.['validateAge'] &&
+			!control.errors?.['validateAge']?.valid">
+			{{ control?.errors?.['validateAge']?.errorMessage }}
+		</p>
+		<p
+			*ngIf="control.errors?.['validatePhoneNumber'] &&
+			!control.errors?.['validatePhoneNumber']?.valid">
+			{{ name }} is invalid
+		</p>
+
+		<p *ngIf="control.errors?.['whitespace']" >
+			{{ name }} can not be blank
+		</p>
+	</div>
+	<!-- </ng-template> -->
+</ng-container>

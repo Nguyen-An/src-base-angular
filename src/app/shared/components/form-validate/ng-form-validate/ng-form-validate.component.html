@@ -1,0 +1,34 @@
+<ng-container *ngIf="key">
+  <ng-container
+    *ngIf="(key.touched || key.dirty || form?.submitted || dirty) && key.errors"
+  >
+    <ng-container *ngIf="customError; else defaultMessage">
+      <p class="text-error" *ngIf="key['errors'][customError?.error!]">
+        {{ customError.message }}
+      </p>
+    </ng-container>
+    <ng-template #defaultMessage>
+      <p class="text-error" *ngIf="key['errors'].required">
+        Please enter your {{ name || "this field" }}
+      </p>
+      <p class="text-error" *ngIf="key['errors'].email">
+        Please enter a valid {{ name || "this field" }}
+      </p>
+      <p class="text-error" *ngIf="key['errors'].pattern">
+        Please enter a valid {{ name || "this field" }}
+      </p>
+      <p class="text-error" *ngIf="key['errors'].minlength">
+        {{ name }} must be less than {{ minLength }} character.
+      </p>
+      <p class="text-error" *ngIf="key['errors'].maxlength">
+        {{ name }} must be at least {{ maxLength }} character.
+      </p>
+      <p class="text-error" *ngIf="key['errors'].validateEqual === false">
+        {{ name || "This field" }} must match
+      </p>
+      <p class="text-error" *ngIf="key['errors'].owlDateTimeMin">
+        Please select the end time after the start time
+      </p>
+    </ng-template>
+  </ng-container>
+</ng-container>
